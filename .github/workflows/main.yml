@@ -8,7 +8,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: jsfillman/hello-world-docker-action@v1
+      uses: jsfillman/hello-world-docker-action@v2
       with:
         who-to-greet: 'Mona the Octocat'
         github-token: ${{ secrets.GITHUB_TOKEN }} # Provide GITHUB_TOKEN to login into the GitHub Packages
