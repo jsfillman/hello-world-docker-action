@@ -3,6 +3,7 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' # Running this job only for master branch
     name: A job to say hello
     steps:
     - name: Hello world action step
@@ -10,7 +11,8 @@ jobs:
       uses: jsfillman/hello-world-docker-action@v1
       with:
         who-to-greet: 'Mona the Octocat'
+        github-token: ${{ secrets.GITHUB_TOKEN }} # Provide GITHUB_TOKEN to login into the GitHub Packages
+        image-name: my-cool-service # Provide only Docker image name, tag will be automatically set to latest  
     # Use the output from the `hello` step
     - name: Get the output time
       run: echo "The time was ${{ steps.hello.outputs.time }}"
-
